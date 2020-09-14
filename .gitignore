@@ -1,0 +1,14 @@
+*/**/dist
+*/**/debug
+*/**/nbproject/*.mk
+*/**/nbproject/*.properties
+*/**/nbproject/*.bash
+*/**/nbproject/private/
+
+
+*/**/Debug
+*/**/settings
+*/**/*.custom_argvars
+*/**/*.dep
+
+!firmware/src/**/debug/
