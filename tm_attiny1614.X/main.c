@@ -24,6 +24,7 @@
 #include "mcc_generated_files/mcc.h"
 #include "app_fault.h"
 #include "app_adc.h"
+#include "app_i2c.h"
 /*
     Main application
 */
@@ -35,9 +36,11 @@ int main(void)
     /* Replace with your application code */
     APP_FAULT_Initialize();
     APP_ADC_Initialize();
+    APP_I2C_Initialize();
     while (1){
         APP_FAULT_Tasks();
         APP_ADC_Tasks();
+        APP_I2C_Tasks();
     }
 }
 /**
