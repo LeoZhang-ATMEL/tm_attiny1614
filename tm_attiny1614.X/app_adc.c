@@ -110,18 +110,22 @@ void APP_ADC_Tasks ( void )
             if (app_adcData.adc3 > app_adcData.adc1) {
                 if ((app_adcData.adc3 - app_adcData.adc1) > ADC_THRESHOLD_DELTA) {
                     app_adcData.state = APP_ADC_FAULT_DETECT;
+                    break;
                 }
             } else if (app_adcData.adc3 < app_adcData.adc1) {
                 if ((app_adcData.adc1 - app_adcData.adc3) > ADC_THRESHOLD_DELTA) {
                     app_adcData.state = APP_ADC_FAULT_DETECT;
+                    break;
                 }
             } else if (app_adcData.adc3 > app_adcData.adc2) {
                 if ((app_adcData.adc3 - app_adcData.adc2) > ADC_THRESHOLD_DELTA) {
                     app_adcData.state = APP_ADC_FAULT_DETECT;
+                    break;
                 }
             } else if (app_adcData.adc3 < app_adcData.adc2) {
                 if ((app_adcData.adc2 - app_adcData.adc3) > ADC_THRESHOLD_DELTA) {
                     app_adcData.state = APP_ADC_FAULT_DETECT;
+                    break;
                 }
             }
             app_adcData.state = APP_ADC_FAULT_RECOVER;
@@ -130,7 +134,7 @@ void APP_ADC_Tasks ( void )
         case APP_ADC_FAULT_DETECT:
         {
             if (EN_GetValue()) {
-                EN_SetHigh();
+                EN_SetLow();
             }
             app_adcData.state = APP_ADC1_SAMPLE;
             break;

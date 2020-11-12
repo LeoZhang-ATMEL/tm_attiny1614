@@ -31,19 +31,30 @@ struct lp8863_cmd_t {
 /* 1.21V/21K * 2560 (= 0.1475) * (Num / 4095) */
 /* 90mA = 2507(0x9CB), 10ma = 277(0x115), 7ma = 194(0xC2) */
 
-static uint8_t LP8863_1_BL_MODE[] = {0x2C, 0x20, 0x02, 0x00};
-static uint8_t LP8863_1_LED0_CURRENT[] = {0x2D, 0xC2, 0xCB, 0x09}; /* 90mA */
-static uint8_t LP8863_1_LED1_CURRENT[] = {0x2D, 0xC4, 0xCB, 0x09}; /* 90mA */
-static uint8_t LP8863_1_LED2_CURRENT[] = {0x2D, 0xC6, 0xCB, 0x09}; /* 90mA */
-static uint8_t LP8863_1_LED3_CURRENT[] = {0x2D, 0xC8, 0xCB, 0x09}; /* 90mA */
-static uint8_t LP8863_1_LED4_CURRENT[] = {0x2D, 0xCA, 0xCB, 0x09}; /* 90mA */
-static uint8_t LP8863_1_LED5_CURRENT[] = {0x2D, 0xCC, 0xCB, 0x09}; /* 90mA */
-static uint8_t LP8863_1_DISPLAY_BRT[] = {0x2C, 0x28, 0x00, 0x00};
+#define CURRENT_FORM(MA) ((MA/(float)147.5)*4095)
+#define LP8863_1_LED_CUR ((uint16_t)CURRENT_FORM(90))
 
-static uint8_t LP8863_2_BL_MODE[] = {0x3C, 0x20, 0x02, 0x00};
-static uint8_t LP8863_2_LED0_CURRENT[] = {0x3D, 0xC2, 0x15, 0x01}; /* 10mA */
-static uint8_t LP8863_2_LED2_CURRENT[] = {0x3D, 0xC4, 0xC2, 0x00}; /* 7mA */
-static uint8_t LP8863_2_DISPLAY_BRT[] = {0x3C, 0x28, 0x00, 0x00};
+#define LP8863_2_LED0_CUR ((uint16_t)CURRENT_FORM(10))
+#define LP8863_2_LED2_CUR ((uint16_t)CURRENT_FORM(7))
+#define LP8863_2_LED0_EN 1
+#define LP8863_2_LED2_EN 1
+
+static uint8_t LP8863_1_BL_MODE[] = {0x2C, 0x20, 0x02, 0x00};
+static uint8_t LP8863_1_LED0_CURRENT[] = {0x2D, 0xC2, LP8863_1_LED_CUR & 0xFF, LP8863_1_LED_CUR >> 8}; /* 90mA */
+static uint8_t LP8863_1_LED1_CURRENT[] = {0x2D, 0xC4, LP8863_1_LED_CUR & 0xFF, LP8863_1_LED_CUR >> 8}; /* 90mA */
+static uint8_t LP8863_1_LED2_CURRENT[] = {0x2D, 0xC6, LP8863_1_LED_CUR & 0xFF, LP8863_1_LED_CUR >> 8}; /* 90mA */
+static uint8_t LP8863_1_LED3_CURRENT[] = {0x2D, 0xC8, LP8863_1_LED_CUR & 0xFF, LP8863_1_LED_CUR >> 8}; /* 90mA */
+static uint8_t LP8863_1_LED4_CURRENT[] = {0x2D, 0xCA, LP8863_1_LED_CUR & 0xFF, LP8863_1_LED_CUR >> 8}; /* 90mA */
+static uint8_t LP8863_1_LED5_CURRENT[] = {0x2D, 0xCC, LP8863_1_LED_CUR & 0xFF, LP8863_1_LED_CUR >> 8}; /* 90mA */
+static uint8_t LP8863_1_DISPLAY_BRT[] = {0x2C, 0x28, 0xFF, 0xFF};
+
+static uint8_t LP8863_2_BL_MODE[] = {0x3C, 0x20, 0x02, 0x03};
+static uint8_t LP8863_2_LED0_CURRENT[] = {0x3D, 0xC2, LP8863_2_LED0_CUR & 0xFF, LP8863_2_LED0_CUR >> 8}; /* 10mA */
+static uint8_t LP8863_2_LED2_CURRENT[] = {0x3D, 0xC6, LP8863_2_LED2_CUR & 0xFF, LP8863_2_LED2_CUR >> 8}; /* 7mA */
+static uint8_t LP8863_2_GROUPING1[] = {0x3C, 0x30, (LP8863_2_LED0_EN)?0x01:0x00, (LP8863_2_LED2_EN)?0x03:0x00}; /* LED0:Cluster1, LED2:Cluster3 */
+static uint8_t LP8863_2_CLUSTER1_BRT[] = {0x3D, 0x3C, 0xFF, 0xFF};
+static uint8_t LP8863_2_CLUSTER3_BRT[] = {0x3D, 0x54, 0xFF, 0xFF};
+static uint8_t LP8863_2_BRT_DB_CONTROL[] = {0x3D, 0x78, 0x01, 0x00}; /* Must call this after setting LEDx_CURRENT and CLUSTERx_BRT register */
 
 struct lp8863_cmd_t lp8863Cmds[] = {
     //Command, Type, TX/RX Length, Data Address
@@ -57,8 +68,11 @@ struct lp8863_cmd_t lp8863Cmds[] = {
     {3, LP8863_1_DISPLAY_BRT },
     {3, LP8863_2_BL_MODE },
     {3, LP8863_2_LED0_CURRENT },
-    {3, LP8863_2_LED2_CURRENT },
-    {3, LP8863_2_DISPLAY_BRT }
+    {3, LP8863_2_LED2_CURRENT }, /* LED2 */
+    {3, LP8863_2_GROUPING1},
+    {3, LP8863_2_CLUSTER1_BRT},
+    {3, LP8863_2_CLUSTER3_BRT}, /* LED2 */
+    {3, LP8863_2_BRT_DB_CONTROL}
 };
 #define TABLE_SIZE  (sizeof(lp8863Cmds)/sizeof(struct lp8863_cmd_t))
 

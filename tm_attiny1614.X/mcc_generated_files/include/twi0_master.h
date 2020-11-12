@@ -44,7 +44,7 @@ extern "C" {
 #endif
 
 #define TWI0_BAUD(F_SCL, T_RISE)    \
-    ((((((float)16000000 / (float)F_SCL)) - 10 - ((float)16000000 * T_RISE / 1000000))) / 2)
+    ((((((float)2666666 / (float)F_SCL)) - 10 - ((float)2666666 * T_RISE / 1000000))) / 2)
 
 typedef enum {
     I2C0_NOERR,  // The message was sent.
