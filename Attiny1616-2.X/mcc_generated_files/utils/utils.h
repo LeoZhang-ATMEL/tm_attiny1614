@@ -31,31 +31,31 @@
 */
 
 
-#ifndef MCC_H
-#define	MCC_H
+/**
+ * \defgroup doc_driver_utils AVR Code utility functions
+ *
+ * Compiler abstraction layer and code utilities for AVR.
+ * This module provides various abstraction layers and utilities
+ * to make code compatible between different compilers.
+ *
+ * \{
+ */
+
+#ifndef UTILS_H_INCLUDED
+#define UTILS_H_INCLUDED
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "utils/compiler.h"
-#include "include/pin_manager.h"
-#include "include/twi0_master.h"
-#include "include/adc0.h"
-#include "include/cpuint.h"
-#include "include/tca0.h"
-#include "config/clock_config.h"
-
 /**
- * Initializes MCU, drivers and middleware in the project
-**/
-void SYSTEM_Initialize(void);
-int8_t BOD_Initialize();
-int8_t CLKCTRL_Initialize();
-int8_t SLPCTRL_Initialize();
-int8_t WDT_Initialize();
+ * \brief Retrieve array size
+ */
+#define ARRAY_SIZE(a) (sizeof(a) / sizeof((a)[0]))
+
+/** @} */
 
 #ifdef __cplusplus
 }
 #endif
-#endif	/* MCC_H */
+#endif /* UTILS_H_INCLUDED */

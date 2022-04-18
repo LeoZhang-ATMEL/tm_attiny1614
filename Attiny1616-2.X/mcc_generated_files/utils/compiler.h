@@ -31,31 +31,50 @@
 */
 
 
-#ifndef MCC_H
-#define	MCC_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "utils/compiler.h"
-#include "include/pin_manager.h"
-#include "include/twi0_master.h"
-#include "include/adc0.h"
-#include "include/cpuint.h"
-#include "include/tca0.h"
-#include "config/clock_config.h"
+#ifndef UTILS_COMPILER_H
+#define UTILS_COMPILER_H
 
 /**
- * Initializes MCU, drivers and middleware in the project
-**/
-void SYSTEM_Initialize(void);
-int8_t BOD_Initialize();
-int8_t CLKCTRL_Initialize();
-int8_t SLPCTRL_Initialize();
-int8_t WDT_Initialize();
+ * \defgroup doc_driver_utils_compiler Compiler abstraction
+ * \ingroup doc_driver_utils
+ *
+ * Compiler abstraction layer and code utilities for 8-bit AVR.
+ * This module provides various abstraction layers and utilities
+ * to make code compatible between different compilers.
+ *
+ * \{
+ */
 
-#ifdef __cplusplus
-}
+#if defined(__GNUC__)
+#include <avr/io.h>
+#include <avr/builtins.h>
+#elif defined(__ICCAVR__)
+#define ENABLE_BIT_DEFINITIONS 1
+#include <ioavr.h>
+#include <intrinsics.h>
+
+#ifndef CCP_IOREG_gc
+#define CCP_IOREG_gc 0xD8 /* CPU_CCP_IOREG_gc */
 #endif
-#endif	/* MCC_H */
+#ifndef CCP_SPM_gc
+#define CCP_SPM_gc 0x9D /* CPU_CCP_SPM_gc */
+#endif
+
+#else
+#error Unsupported compiler.
+#endif
+
+#include <stdbool.h>
+#include <stdint.h>
+#include <stddef.h>
+#include <stdlib.h>
+
+#include "interrupt_avr8.h"
+
+/**
+ * \def UNUSED
+ * \brief Marking \a v as a unused parameter or value.
+ */
+#define UNUSED(v) (void)(v)
+
+#endif /* UTILS_COMPILER_H */

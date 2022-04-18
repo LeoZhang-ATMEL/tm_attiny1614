@@ -31,31 +31,11 @@
 */
 
 
-#ifndef MCC_H
-#define	MCC_H
+#ifndef CLOCK_CONFIG_H
+#define CLOCK_CONFIG_H
 
-#ifdef __cplusplus
-extern "C" {
+#ifndef F_CPU
+#define F_CPU 10000000
 #endif
 
-#include "utils/compiler.h"
-#include "include/pin_manager.h"
-#include "include/twi0_master.h"
-#include "include/adc0.h"
-#include "include/cpuint.h"
-#include "include/tca0.h"
-#include "config/clock_config.h"
-
-/**
- * Initializes MCU, drivers and middleware in the project
-**/
-void SYSTEM_Initialize(void);
-int8_t BOD_Initialize();
-int8_t CLKCTRL_Initialize();
-int8_t SLPCTRL_Initialize();
-int8_t WDT_Initialize();
-
-#ifdef __cplusplus
-}
-#endif
-#endif	/* MCC_H */
+#endif // CLOCK_CONFIG_H

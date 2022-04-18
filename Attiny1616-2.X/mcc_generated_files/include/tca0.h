@@ -5,7 +5,7 @@
   @Description
     This Source file provides APIs.
     Generation Information :
-    Driver Version    :   1.0.0
+    Driver Version    :   2.0.0
 */
 /*
     (c) 2018 Microchip Technology Inc. and its subsidiaries. 
@@ -31,31 +31,42 @@
 */
 
 
-#ifndef MCC_H
-#define	MCC_H
+#ifndef TCA0_H_INCLUDED
+#define TCA0_H_INCLUDED
+
+#include "../utils/compiler.h"
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "utils/compiler.h"
-#include "include/pin_manager.h"
-#include "include/twi0_master.h"
-#include "include/adc0.h"
-#include "include/cpuint.h"
-#include "include/tca0.h"
-#include "config/clock_config.h"
-
 /**
- * Initializes MCU, drivers and middleware in the project
-**/
-void SYSTEM_Initialize(void);
-int8_t BOD_Initialize();
-int8_t CLKCTRL_Initialize();
-int8_t SLPCTRL_Initialize();
-int8_t WDT_Initialize();
+ * \brief Initialize tca interface
+ *
+ * \return Initialization status.
+ */
+    
+typedef void (*TCA0_cb_t)(void);    
 
+int8_t TCA0_Initialize();
+void TCA0_SetOVFIsrCallback(TCA0_cb_t cb);
+void TCA0_SetCMP0IsrCallback(TCA0_cb_t cb);
+void TCA0_SetCMP1IsrCallback(TCA0_cb_t cb);
+void TCA0_SetCMP2IsrCallback(TCA0_cb_t cb);
+void TCA0_EnableInterrupt(void);
+void TCA0_DisableInterrupt(void);
+uint16_t TCA0_ReadTimer(void);
+void TCA0_WriteTimer(uint16_t timerVal);
+void TCA0_ClearOverflowInterruptFlag(void);
+bool TCA0_IsOverflowInterruptEnabled(void);
+void TCA0_ClearCMP0InterruptFlag(void);
+bool TCA0_IsCMP0InterruptEnabled(void);
+void TCA0_ClearCMP1InterruptFlag(void);
+bool TCA0_IsCMP1InterruptEnabled(void);
+void TCA0_ClearCMP2InterruptFlag(void);
+bool TCA0_IsCMP2InterruptEnabled(void);
 #ifdef __cplusplus
 }
 #endif
-#endif	/* MCC_H */
+
+#endif /* TCA0_H_INCLUDED */

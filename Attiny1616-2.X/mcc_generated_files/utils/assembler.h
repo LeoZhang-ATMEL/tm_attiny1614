@@ -31,31 +31,19 @@
 */
 
 
-#ifndef MCC_H
-#define	MCC_H
+#ifndef ASSEMBLER_H_INCLUDED
+#define ASSEMBLER_H_INCLUDED
 
-#ifdef __cplusplus
-extern "C" {
+#if !defined(__ASSEMBLER__) && !defined(__IAR_SYSTEMS_ASM__) && !defined(__DOXYGEN__)
+#error This file may only be included from assembly files
 #endif
 
-#include "utils/compiler.h"
-#include "include/pin_manager.h"
-#include "include/twi0_master.h"
-#include "include/adc0.h"
-#include "include/cpuint.h"
-#include "include/tca0.h"
-#include "config/clock_config.h"
-
-/**
- * Initializes MCU, drivers and middleware in the project
-**/
-void SYSTEM_Initialize(void);
-int8_t BOD_Initialize();
-int8_t CLKCTRL_Initialize();
-int8_t SLPCTRL_Initialize();
-int8_t WDT_Initialize();
-
-#ifdef __cplusplus
-}
+#if defined(__ASSEMBLER__)
+#include "assembler/gas.h"
+#include <avr/io.h>
+#elif defined(__IAR_SYSTEMS_ASM__)
+#include "assembler/iar.h"
+#include <ioavr.h>
 #endif
-#endif	/* MCC_H */
+
+#endif /* ASSEMBLER_H_INCLUDED */

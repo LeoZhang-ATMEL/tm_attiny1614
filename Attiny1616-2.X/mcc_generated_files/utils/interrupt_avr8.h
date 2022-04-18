@@ -31,31 +31,70 @@
 */
 
 
-#ifndef MCC_H
-#define	MCC_H
+/**
+ * \defgroup doc_driver_utils_interrupts ISR abstraction
+ * \ingroup doc_driver_utils
+ *
+ * Interrupt-related functionality.
+ *
+ * \{
+ */
 
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "utils/compiler.h"
-#include "include/pin_manager.h"
-#include "include/twi0_master.h"
-#include "include/adc0.h"
-#include "include/cpuint.h"
-#include "include/tca0.h"
-#include "config/clock_config.h"
+#ifndef UTILS_INTERRUPT_AVR8_H
+#define UTILS_INTERRUPT_AVR8_H
 
 /**
- * Initializes MCU, drivers and middleware in the project
-**/
-void SYSTEM_Initialize(void);
-int8_t BOD_Initialize();
-int8_t CLKCTRL_Initialize();
-int8_t SLPCTRL_Initialize();
-int8_t WDT_Initialize();
+ * \weakgroup interrupt_group
+ *
+ * @{
+ */
 
-#ifdef __cplusplus
-}
+#ifdef ISR_CUSTOM_H
+#include ISR_CUSTOM_H
+#else
+
+/**
+ * \def ISR
+ * \brief Define service routine for specified interrupt vector
+ *
+ * Usage:
+ * \code
+    ISR(FOO_vect)
+    {
+        ...
+    }
+\endcode
+ *
+ * \param vect Interrupt vector name as found in the device header files.
+ */
+#if defined(__DOXYGEN__)
+#define ISR(vect)
+#elif defined(__GNUC__)
+#include <avr/interrupt.h>
+#elif defined(__ICCAVR__)
+#define __ISR(x) _Pragma(#x)
+#define ISR(vect) __ISR(vector = vect) __interrupt void handler_##vect(void)
 #endif
-#endif	/* MCC_H */
+#endif // ISR_CUSTOM_H
+
+#ifdef __GNUC__
+#define cpu_irq_enable() sei()
+#define cpu_irq_disable() cli()
+#else
+#define cpu_irq_enable() __enable_interrupt()
+#define cpu_irq_disable() __disable_interrupt()
+#endif
+
+//! @}
+
+/**
+ * \weakgroup interrupt_deprecated_group
+ * @{
+ */
+// Deprecated definitions.
+#define Enable_global_interrupt() cpu_irq_enable()
+#define Disable_global_interrupt() cpu_irq_disable()
+#define Is_global_interrupt_enabled() cpu_irq_is_enabled()
+//! @}
+
+#endif /* UTILS_INTERRUPT_AVR8_H */

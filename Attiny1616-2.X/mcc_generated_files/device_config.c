@@ -31,31 +31,19 @@
 */
 
 
-#ifndef MCC_H
-#define	MCC_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "utils/compiler.h"
-#include "include/pin_manager.h"
-#include "include/twi0_master.h"
-#include "include/adc0.h"
-#include "include/cpuint.h"
-#include "include/tca0.h"
-#include "config/clock_config.h"
+#include <avr/io.h>
 
 /**
- * Initializes MCU, drivers and middleware in the project
-**/
-void SYSTEM_Initialize(void);
-int8_t BOD_Initialize();
-int8_t CLKCTRL_Initialize();
-int8_t SLPCTRL_Initialize();
-int8_t WDT_Initialize();
+ * \Configures Fuse bits
+ */
 
-#ifdef __cplusplus
-}
-#endif
-#endif	/* MCC_H */
+FUSES = 
+{
+	.APPEND = 0,
+	.BODCFG = ACTIVE_ENABLED_gc | LVL_BODLEVEL0_gc | SAMPFREQ_1KHZ_gc | SLEEP_DIS_gc,
+	.BOOTEND = 0,
+	.OSCCFG = FREQSEL_20MHZ_gc,
+	.SYSCFG0 = CRCSRC_NOCRC_gc | RSTPINCFG_UPDI_gc,
+	.SYSCFG1 = SUT_64MS_gc,
+	.WDTCFG = PERIOD_OFF_gc | WINDOW_OFF_gc,
+};

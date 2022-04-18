@@ -31,31 +31,65 @@
 */
 
 
-#ifndef MCC_H
-#define	MCC_H
+/**
+ * \defgroup doc_driver_system_protected_io Protected IO
+ * \ingroup doc_driver_system
+ *
+ * \section doc_driver_protected_io_rev Revision History
+ * - v0.0.0.1 Initial Commit
+ *
+ *@{
+ */
+
+#ifndef PROTECTED_IO_H
+#define PROTECTED_IO_H
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "utils/compiler.h"
-#include "include/pin_manager.h"
-#include "include/twi0_master.h"
-#include "include/adc0.h"
-#include "include/cpuint.h"
-#include "include/tca0.h"
-#include "config/clock_config.h"
+#if defined(__DOXYGEN__)
+//! \name IAR Memory Model defines.
+//@{
 
 /**
- * Initializes MCU, drivers and middleware in the project
-**/
-void SYSTEM_Initialize(void);
-int8_t BOD_Initialize();
-int8_t CLKCTRL_Initialize();
-int8_t SLPCTRL_Initialize();
-int8_t WDT_Initialize();
+ * \def CONFIG_MEMORY_MODEL_TINY
+ * \brief Configuration symbol to enable 8 bit pointers.
+ *
+ */
+#define CONFIG_MEMORY_MODEL_TINY
 
-#ifdef __cplusplus
-}
+/**
+ * \def CONFIG_MEMORY_MODEL_SMALL
+ * \brief Configuration symbol to enable 16 bit pointers.
+ * \note If no memory model is defined, SMALL is default.
+ *
+ */
+#define CONFIG_MEMORY_MODEL_SMALL
+
+/**
+ * \def CONFIG_MEMORY_MODEL_LARGE
+ * \brief Configuration symbol to enable 24 bit pointers.
+ *
+ */
+#define CONFIG_MEMORY_MODEL_LARGE
+
+//@}
 #endif
-#endif	/* MCC_H */
+
+/**
+ * \brief Write to am 8-bit I/O register protected by CCP or a protection bit
+ *
+ * \param addr Address of the I/O register
+ * \param magic CCP magic value or Mask for protection bit
+ * \param value Value to be written
+ *
+ * \note Using IAR Embedded workbench, the choice of memory model has an impact
+ *       on calling convention. The memory model is not visible to the
+ *       preprocessor, so it must be defined in the Assembler preprocessor directives.
+ */
+extern void protected_write_io(void *addr, uint8_t magic, uint8_t value);
+
+/** @} */
+
+#endif /* PROTECTED_IO_H */

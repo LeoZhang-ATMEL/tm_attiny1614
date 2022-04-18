@@ -49,10 +49,12 @@ void PIN_MANAGER_Initialize()
     /* DIR Registers Initialization */
     PORTA.DIR = 0x40;
     PORTB.DIR = 0x08;
+    PORTC.DIR = 0x00;
 
     /* OUT Registers Initialization */
     PORTA.OUT = 0x00;
     PORTB.OUT = 0x00;
+    PORTC.OUT = 0x00;
 
     /* PINxCTRL registers Initialization */
     PORTA.PIN0CTRL = 0x00;
@@ -71,6 +73,14 @@ void PIN_MANAGER_Initialize()
     PORTB.PIN5CTRL = 0x00;
     PORTB.PIN6CTRL = 0x00;
     PORTB.PIN7CTRL = 0x00;
+    PORTC.PIN0CTRL = 0x00;
+    PORTC.PIN1CTRL = 0x00;
+    PORTC.PIN2CTRL = 0x00;
+    PORTC.PIN3CTRL = 0x00;
+    PORTC.PIN4CTRL = 0x00;
+    PORTC.PIN5CTRL = 0x00;
+    PORTC.PIN6CTRL = 0x00;
+    PORTC.PIN7CTRL = 0x00;
 
     /* PORTMUX Initialization */
     PORTMUX.CTRLA = 0x00;
@@ -101,6 +111,10 @@ void PORT_Initialize(void)
     
     for (uint8_t i = 0; i < 8; i++) {
         *((uint8_t *)&PORTB + 0x10 + i) |= 1 << PORT_PULLUPEN_bp;
+    }
+    
+    for (uint8_t i = 0; i < 8; i++) {
+        *((uint8_t *)&PORTC + 0x10 + i) |= 1 << PORT_PULLUPEN_bp;
     }
     
 }

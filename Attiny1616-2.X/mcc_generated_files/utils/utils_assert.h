@@ -31,31 +31,42 @@
 */
 
 
-#ifndef MCC_H
-#define	MCC_H
+/**
+ * \defgroup doc_driver_utils_assert Functionality for assert.
+ * \ingroup doc_driver_utils
+ *
+ * \{
+ */
+
+#ifndef _ASSERT_H_INCLUDED
+#define _ASSERT_H_INCLUDED
 
 #ifdef __cplusplus
 extern "C" {
 #endif
 
-#include "utils/compiler.h"
-#include "include/pin_manager.h"
-#include "include/twi0_master.h"
-#include "include/adc0.h"
-#include "include/cpuint.h"
-#include "include/tca0.h"
-#include "config/clock_config.h"
+#include <stdbool.h>
 
 /**
- * Initializes MCU, drivers and middleware in the project
-**/
-void SYSTEM_Initialize(void);
-int8_t BOD_Initialize();
-int8_t CLKCTRL_Initialize();
-int8_t SLPCTRL_Initialize();
-int8_t WDT_Initialize();
+ * \brief Assert macro
+ *
+ * This macro is used to throw asserts. It can be mapped to different function
+ * based on debug level.
+ *
+ * \param[in] condition A condition to be checked;
+ *                      assert is thrown if the given condition is false
+ */
+
+#ifdef DEBUG
+#define ASSERT(condition)                                                                                              \
+	if (!(condition))                                                                                                  \
+		while (true)                                                                                                   \
+			;
+#else
+#define ASSERT(condition) ((void)0)
+#endif
 
 #ifdef __cplusplus
 }
 #endif
-#endif	/* MCC_H */
+#endif /* _ASSERT_H_INCLUDED */

@@ -31,31 +31,24 @@
 */
 
 
-#ifndef MCC_H
-#define	MCC_H
-
-#ifdef __cplusplus
-extern "C" {
-#endif
-
-#include "utils/compiler.h"
-#include "include/pin_manager.h"
-#include "include/twi0_master.h"
-#include "include/adc0.h"
-#include "include/cpuint.h"
-#include "include/tca0.h"
-#include "config/clock_config.h"
+#include "../include/cpuint.h"
 
 /**
- * Initializes MCU, drivers and middleware in the project
-**/
-void SYSTEM_Initialize(void);
-int8_t BOD_Initialize();
-int8_t CLKCTRL_Initialize();
-int8_t SLPCTRL_Initialize();
-int8_t WDT_Initialize();
+ * \brief Initialize cpuint interface
+ */
+int8_t CPUINT_Initialize()
+{
+    /* IVSEL and CVT are Configuration Change Protected */
 
-#ifdef __cplusplus
+    //IVSEL disabled; CVT disabled; LVL0RR disabled; 
+    ccp_write_io((void*)&(CPUINT.CTRLA),0x00);
+    
+    //LVL0PRI 0; 
+    CPUINT.LVL0PRI = 0x00;
+    
+    //LVL1VEC 0; 
+    CPUINT.LVL1VEC = 0x00;
+
+        
+    return 0;
 }
-#endif
-#endif	/* MCC_H */
