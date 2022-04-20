@@ -3,11 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="Tianma">
-            <file>file:/D:/Workspace/AI/Customer/Tianma/Attiny1614/tm_attiny1614.X/app_i2c.c</file>
-            <file>file:/D:/Workspace/AI/Customer/Tianma/Attiny1614/tm_attiny1614.X/mcc_generated_files/examples/twi0_master_example.c</file>
-            <file>file:/D:/Workspace/AI/Customer/Tianma/Attiny1614/tm_attiny1614.X/main.c</file>
-            <file>file:/D:/Workspace/AI/Customer/Tianma/Attiny1614/tm_attiny1614.X/mcc_generated_files/mcc.c</file>
-            <file>file:/D:/Workspace/AI/Customer/Tianma/Attiny1614/tm_attiny1614.X/app_i2c.h</file>
+            <file>file:/F:/Microchip/MCU/MCU08/Attiny-1-series/Customer/Tianma/Attiny1614/tm_attiny1614/tm_attiny1614.X/main.c</file>
         </group>
     </open-files>
 </project-private>

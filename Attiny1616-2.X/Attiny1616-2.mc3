@@ -168,7 +168,7 @@
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="ADC0" name="selectedChannels"/>
-         <value>{&quot;type&quot;:&quot;table&quot;,&quot;key&quot;:&quot;selectedChannels&quot;,&quot;dataArray&quot;: [{&quot;Pin&quot;:&quot;PIN_AIN2&quot;,&quot;Channel&quot;:&quot;PIN_AIN2&quot;,&quot;Custom Name&quot;:&quot;channel_PIN_AIN2&quot;},{&quot;Pin&quot;:&quot;PIN_AIN1&quot;,&quot;Channel&quot;:&quot;PIN_AIN1&quot;,&quot;Custom Name&quot;:&quot;channel_PIN_AIN1&quot;},{&quot;Pin&quot;:&quot;Internal Channel&quot;,&quot;Channel&quot;:&quot;Internal_Ref&quot;,&quot;Custom Name&quot;:&quot;channel_Internal Ref&quot;},{&quot;Pin&quot;:&quot;Internal Channel&quot;,&quot;Channel&quot;:&quot;DAC0/DAC0&quot;,&quot;Custom Name&quot;:&quot;channel_DAC0/DAC0&quot;},{&quot;Pin&quot;:&quot;Internal Channel&quot;,&quot;Channel&quot;:&quot;PTC/DAC2&quot;,&quot;Custom Name&quot;:&quot;channel_PTC/DAC2&quot;},{&quot;Pin&quot;:&quot;Internal Channel&quot;,&quot;Channel&quot;:&quot;Temp_sensor/DAC1&quot;,&quot;Custom Name&quot;:&quot;channel_Temp sensor/DAC1&quot;},{&quot;Pin&quot;:&quot;Internal Channel&quot;,&quot;Channel&quot;:&quot;GND&quot;,&quot;Custom Name&quot;:&quot;channel_GND&quot;}] }</value>
+         <value>{&quot;type&quot;:&quot;table&quot;,&quot;key&quot;:&quot;selectedChannels&quot;,&quot;dataArray&quot;: [{&quot;Pin&quot;:&quot;PIN_AIN2&quot;,&quot;Channel&quot;:&quot;PIN_AIN2&quot;,&quot;Custom Name&quot;:&quot;channel_PIN_AIN2&quot;},{&quot;Pin&quot;:&quot;PIN_AIN1&quot;,&quot;Channel&quot;:&quot;PIN_AIN1&quot;,&quot;Custom Name&quot;:&quot;channel_PIN_AIN1&quot;},{&quot;Pin&quot;:&quot;Internal Channel&quot;,&quot;Channel&quot;:&quot;Internal_Ref&quot;,&quot;Custom Name&quot;:&quot;channel_Internal Ref&quot;},{&quot;Pin&quot;:&quot;Internal Channel&quot;,&quot;Channel&quot;:&quot;GND&quot;,&quot;Custom Name&quot;:&quot;channel_GND&quot;},{&quot;Pin&quot;:&quot;Internal Channel&quot;,&quot;Channel&quot;:&quot;Temp_sensor/DAC1&quot;,&quot;Custom Name&quot;:&quot;channel_Temp sensor/DAC1&quot;},{&quot;Pin&quot;:&quot;Internal Channel&quot;,&quot;Channel&quot;:&quot;PTC/DAC2&quot;,&quot;Custom Name&quot;:&quot;channel_PTC/DAC2&quot;},{&quot;Pin&quot;:&quot;Internal Channel&quot;,&quot;Channel&quot;:&quot;DAC0/DAC0&quot;,&quot;Custom Name&quot;:&quot;channel_DAC0/DAC0&quot;}] }</value>
       </entry>
       <entry>
          <key class="com.microchip.mcc.core.tokenManager.CustomKey" moduleName="ADC0" name="smpAcmNumber"/>
@@ -6787,126 +6787,126 @@
          <value>disabled</value>
       </entry>
    </tokenMap>
-   <generatedFileHashHistoryMap class="java.util.HashMap">
-      <entry>
-         <file>mcc_generated_files\include\pin_manager.h</file>
-         <hash>4ff32d9cbe2a4af5d500ce7de1edfd7979f971322987456ef4c8a9b5c1590d36</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\src\protected_io.S</file>
-         <hash>69d7d2c54bccf38027e4950b66dadc2d9c0be7a2523ffbe4648ec79e87f33522</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\utils\compiler.h</file>
-         <hash>3f2d7b47b12f2ecbd4c3971644ea7ecd10d2562fc8605a4495bd597eb0f59750</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\examples\twi0_master_example.h</file>
-         <hash>02898479c3945bf2c96bdb80fe183ef68161725d4823d952b9a6db2ad4ebd7cc</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\include\twi0_master.h</file>
-         <hash>7bdf02c982b14ff6b82ca56b02a4fdee4e44c5d7f3fa1a32973f77a121284a14</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\src\pin_manager.c</file>
-         <hash>9458c2975292c7350d0c7651288fe77144d356c710450ab8056759458a30fd8c</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\utils\atomic.h</file>
-         <hash>80e018fe02cd0c54394bb9a54dcf927d346410567dc6dded62bea9b49e322acf</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\utils\interrupt_avr8.h</file>
-         <hash>98adc596175f2e76d4d918685cf050032a3efb605901edb6be0a35dda05a57e9</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\src\cpuint.c</file>
-         <hash>caeb52768999d91897f0ac3b19f4b61e8089d3306ffface466d36a3b680d875d</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\examples\twi0_master_example.c</file>
-         <hash>411ac92380fbee0d6e1811c4fb328206454b687266067a2ee7c64238945ec87c</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\include\ccp.h</file>
-         <hash>60059cb974788916ec20d13197b009f4436b347f7eed014aa44aaebf6c516ff1</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\include\protected_io.h</file>
-         <hash>1dd02ce5af5c0f4624172e0ef0bb52d6c8bacb87beabf9d7129d684def52db23</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\mcc.c</file>
-         <hash>927ed1595c8bc5ecb340af21f7d68c2ccc97ca9e0d22d8421625300d8c72493e</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\src\twi0_master.c</file>
-         <hash>66f65a0483d1a70e7806c0b70437562b7b4b455cd112823bfd3d54e1d32772b0</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\include\adc0.h</file>
-         <hash>5d385b77496a32395b6baf2b5c8723319b82121749f86543e5934ca06a97d4b0</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\utils\assembler\iar.h</file>
-         <hash>02efe91f6b4b8b31e5d6141c604f6f918f641f26433ffc12de9de3106df36a2e</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\include\port.h</file>
-         <hash>ec36cbe1b794a19f6f116963b634f9609ffb79e1169a46faa7849485e9817c9c</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\mcc.h</file>
-         <hash>094782c02df7541688e89d1b07d1b787746f794f44d2321d804940cbf69211e7</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\include\tca0.h</file>
-         <hash>9348df821279b8b3f1bbcde896ba008aedeb8dbc7ba016b66dd5d28be4ca8484</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\src\adc0.c</file>
-         <hash>7768265034050ee76afc024ca92fa9f6f5038fbf95e182f0e1777cd8699c2897</hash>
-      </entry>
+   <generatedFileHashHistoryMap class="java.util.TreeMap">
       <entry>
          <file>main.c</file>
          <hash>ad6433d2c98b42e7128f2ebaca15eb375df8a83f923bb0a884d7b0373577396a</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\device_config.c</file>
-         <hash>a59aaecb0b975cf169cc47af03c09eb83945ff89c7d4eae41bcfdca5dab7026e</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\utils\utils.h</file>
-         <hash>38ff19ccdabdd432c321983f3c9190d1767c6e2ac0dc1bba384fc36c62989559</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\utils\assembler.h</file>
-         <hash>90b346ff1c59de9e2d44827ebdb0d696965fdfc8a741bc69a880a8ebc2bf61cc</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\src\tca0.c</file>
-         <hash>9b3822d7069017d168b3b7913f07005cf3e84a7a99be6eced5f626fb0c6de1b5</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\utils\utils_assert.h</file>
-         <hash>002db199835943a5e634d5e9904119d0f50eb94af5300454791a93c81c5353b7</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\include\rstctrl.h</file>
-         <hash>3aaf94dcc7f4f51ce811c4b290f1dbcd29748fb231cb4d3e7f27f49586651c83</hash>
-      </entry>
-      <entry>
-         <file>mcc_generated_files\include\cpuint.h</file>
-         <hash>802591ef9a8f76d82a9ebdd96dac4c62c9a3c56d991188efaebd5ec3ca4228e2</hash>
       </entry>
       <entry>
          <file>mcc_generated_files\config\clock_config.h</file>
          <hash>0eef55377da22021f94443d2ed2dc3a7fc65dc18ea9316108a625d6eb3ada96d</hash>
       </entry>
       <entry>
+         <file>mcc_generated_files\device_config.c</file>
+         <hash>a59aaecb0b975cf169cc47af03c09eb83945ff89c7d4eae41bcfdca5dab7026e</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\examples\twi0_master_example.c</file>
+         <hash>411ac92380fbee0d6e1811c4fb328206454b687266067a2ee7c64238945ec87c</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\examples\twi0_master_example.h</file>
+         <hash>02898479c3945bf2c96bdb80fe183ef68161725d4823d952b9a6db2ad4ebd7cc</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\include\adc0.h</file>
+         <hash>5d385b77496a32395b6baf2b5c8723319b82121749f86543e5934ca06a97d4b0</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\include\ccp.h</file>
+         <hash>60059cb974788916ec20d13197b009f4436b347f7eed014aa44aaebf6c516ff1</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\include\cpuint.h</file>
+         <hash>802591ef9a8f76d82a9ebdd96dac4c62c9a3c56d991188efaebd5ec3ca4228e2</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\include\pin_manager.h</file>
+         <hash>4ff32d9cbe2a4af5d500ce7de1edfd7979f971322987456ef4c8a9b5c1590d36</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\include\port.h</file>
+         <hash>ec36cbe1b794a19f6f116963b634f9609ffb79e1169a46faa7849485e9817c9c</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\include\protected_io.h</file>
+         <hash>1dd02ce5af5c0f4624172e0ef0bb52d6c8bacb87beabf9d7129d684def52db23</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\include\rstctrl.h</file>
+         <hash>3aaf94dcc7f4f51ce811c4b290f1dbcd29748fb231cb4d3e7f27f49586651c83</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\include\tca0.h</file>
+         <hash>9348df821279b8b3f1bbcde896ba008aedeb8dbc7ba016b66dd5d28be4ca8484</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\include\twi0_master.h</file>
+         <hash>7bdf02c982b14ff6b82ca56b02a4fdee4e44c5d7f3fa1a32973f77a121284a14</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\mcc.c</file>
+         <hash>927ed1595c8bc5ecb340af21f7d68c2ccc97ca9e0d22d8421625300d8c72493e</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\mcc.h</file>
+         <hash>094782c02df7541688e89d1b07d1b787746f794f44d2321d804940cbf69211e7</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\src\adc0.c</file>
+         <hash>7768265034050ee76afc024ca92fa9f6f5038fbf95e182f0e1777cd8699c2897</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\src\cpuint.c</file>
+         <hash>caeb52768999d91897f0ac3b19f4b61e8089d3306ffface466d36a3b680d875d</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\src\pin_manager.c</file>
+         <hash>9458c2975292c7350d0c7651288fe77144d356c710450ab8056759458a30fd8c</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\src\protected_io.S</file>
+         <hash>69d7d2c54bccf38027e4950b66dadc2d9c0be7a2523ffbe4648ec79e87f33522</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\src\tca0.c</file>
+         <hash>9b3822d7069017d168b3b7913f07005cf3e84a7a99be6eced5f626fb0c6de1b5</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\src\twi0_master.c</file>
+         <hash>66f65a0483d1a70e7806c0b70437562b7b4b455cd112823bfd3d54e1d32772b0</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\utils\assembler.h</file>
+         <hash>90b346ff1c59de9e2d44827ebdb0d696965fdfc8a741bc69a880a8ebc2bf61cc</hash>
+      </entry>
+      <entry>
          <file>mcc_generated_files\utils\assembler\gas.h</file>
          <hash>6fac20a6e59d9458cc34007cdb9727d244bdc11df5fe1b3b6d17948ab26809c3</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\utils\assembler\iar.h</file>
+         <hash>02efe91f6b4b8b31e5d6141c604f6f918f641f26433ffc12de9de3106df36a2e</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\utils\atomic.h</file>
+         <hash>80e018fe02cd0c54394bb9a54dcf927d346410567dc6dded62bea9b49e322acf</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\utils\compiler.h</file>
+         <hash>3f2d7b47b12f2ecbd4c3971644ea7ecd10d2562fc8605a4495bd597eb0f59750</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\utils\interrupt_avr8.h</file>
+         <hash>98adc596175f2e76d4d918685cf050032a3efb605901edb6be0a35dda05a57e9</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\utils\utils.h</file>
+         <hash>38ff19ccdabdd432c321983f3c9190d1767c6e2ac0dc1bba384fc36c62989559</hash>
+      </entry>
+      <entry>
+         <file>mcc_generated_files\utils\utils_assert.h</file>
+         <hash>002db199835943a5e634d5e9904119d0f50eb94af5300454791a93c81c5353b7</hash>
       </entry>
    </generatedFileHashHistoryMap>
 </config>

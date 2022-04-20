@@ -35,13 +35,16 @@ typedef struct
 } APP_ADC_DATA;
 
 APP_ADC_DATA app_adcData;
-#define ADC_THRESHOLD_MAX (uint16_t)((float)1024 * 1.135 / 3.3)
-#define ADC_THRESHOLD_MIN (uint16_t)((float)1024 * 1.012 / 3.3)
-#define ADC_THRESHOLD_MAX_HYST (uint16_t)((float)1024 * 1.135 * 0.95 / 3.3)
-#define ADC_THRESHOLD_MIN_HYST (uint16_t)((float)1024 * 1.012 * 1.05 / 3.3)
 
-/* The minimum travel distance to be reported */
-#define ADC_THRESHOLD_HYST (uint16_t)((float)1024 * 0.1 / 3.3)
+#define ADC_THRESHOLD_MAX_VAL (1.135)
+#define ADC_THRESHOLD_MIN_VAL (1.012)
+#define ADC_THRESHOLD_HYST (0.05) /* The minimum travel distance to be reported */
+#define ADC_THRESHOLD_MAX (uint16_t)((float)1024 * ADC_THRESHOLD_MAX_VAL / 3.3)
+#define ADC_THRESHOLD_MIN (uint16_t)((float)1024 * ADC_THRESHOLD_MIN_VAL / 3.3)
+#define ADC_THRESHOLD_MAX_HYST (uint16_t)((float)1024 * ADC_THRESHOLD_MAX_VAL * (1 - ADC_THRESHOLD_HYST) / 3.3)
+#define ADC_THRESHOLD_MIN_HYST (uint16_t)((float)1024 * ADC_THRESHOLD_MIN_VAL * (1 + ADC_THRESHOLD_HYST) / 3.3)
+
+
 void APP_ADC_Initialize ( void )
 {
     /* Place the App state machine in its initial state. */
@@ -63,7 +66,7 @@ void APP_ADC_Tasks ( void )
 
         case APP_ADC1_SAMPLE:
         {
-            ADC0_StartConversion(ADC_MUXPOS_AIN1_gc);
+            ADC0_StartConversion(ADC_MUXPOS_AIN2_gc);
             app_adcData.state = APP_ADC1_SAMPLE_READY;
             break;
         }
@@ -80,7 +83,7 @@ void APP_ADC_Tasks ( void )
         
         case APP_ADC2_SAMPLE:
         {
-            ADC0_StartConversion(ADC_MUXPOS_AIN2_gc);
+            ADC0_StartConversion(ADC_MUXPOS_AIN1_gc);
             app_adcData.state = APP_ADC2_SAMPLE_READY;
             break;
         }
@@ -95,13 +98,13 @@ void APP_ADC_Tasks ( void )
             if (app_adcData.volstate == APP_ADC_VOL_LOW) {
                 if (app_adcData.adc1 > ADC_THRESHOLD_MAX) {
                     app_adcData.volstate = APP_ADC_VOL_HIGH;
-                } else if (app_adcData.adc1 > ADC_THRESHOLD_MIN_HYST) {
+                } else if (app_adcData.adc1 > ADC_THRESHOLD_MIN) {
                     app_adcData.volstate = APP_ADC_VOL_NORMAL;
                 }
             } else if (app_adcData.volstate == APP_ADC_VOL_NORMAL) {
                 if (app_adcData.adc1 > ADC_THRESHOLD_MAX) {
                     app_adcData.volstate = APP_ADC_VOL_HIGH;
-                } else if (app_adcData.adc1 < ADC_THRESHOLD_MIN) {
+                } else if (app_adcData.adc1 < ADC_THRESHOLD_MIN_HYST) {
                     app_adcData.volstate = APP_ADC_VOL_LOW;
                 }
             } else if (app_adcData.volstate == APP_ADC_VOL_HIGH) {
